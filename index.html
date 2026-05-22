@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspectum</title>
+    <!-- PWA manifest and iOS meta -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Cardboard Camera VR">
+
+    <link rel="icon" href="/icons/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="/icons/logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="vrView" class="vr-view">
+            <div class="eye-view">
+                <div class="left-eye">
+                    <canvas id="leftCanvas" class="video-feed"></canvas>
+                </div>
+            </div>
+            <div class="eye-view">
+                <div class="right-eye">
+                    <canvas id="rightCanvas" class="video-feed"></canvas>
+                </div>
+            </div>
+        </div>
+        
+    
+        <div class="color-select-container">
+            <select id="colorModeSelect" class="color-select">
+                <option value="0">Normal Vision</option>
+                <option value="1">Protanopia Simulation</option>
+                <option value="2">Deuteranopia Simulation</option>
+                <option value="3">Tritanopia Simulation</option>
+                <option value="4">Protanopia Daltonize</option>
+                <option value="5">Deuteranopia Daltonize</option>
+                <option value="6">Tritanopia Daltonize</option>
+            </select>
+        </div>
+
+        <div class="controls">
+            <button id="stopBtn" class="btn">Stop</button>
+            <button id="fullscreenBtn" class="btn">Fullscreen</button>
+        </div>
+
+        <div id="welcomeOverlay" class="welcome-overlay">
+            <div class="welcome-box">
+                <h1 class="welcome-title">Aspectum VR</h1>
+                <p class="welcome-subtitle">Choose a vision filter above, then click below to launch your VR camera stream.</p>
+                <button id="startCameraBtn" class="launch-btn">Launch VR Stream</button>
+            </div>
+        </div>
+
+
+        
+         <div class="zoom-controls" style="width:1px;height:1px;overflow:hidden;">
+            <button id="zoomInBtn" class="zoom-btn" style="width:1px;height:1px;font-size:1px;padding:0;margin:0;line-height:1px;overflow:hidden;">+</button>
+            <button id="zoomOutBtn" class="zoom-btn" style="width:1px;height:1px;font-size:1px;padding:0;margin:0;line-height:1px;overflow:hidden;">-</button>
+            <button id="sharpnessUpBtn" class="zoom-btn" style="width:1px;height:1px;font-size:1px;padding:0;margin:0;line-height:1px;overflow:hidden;">S+</button>
+            <button id="sharpnessDownBtn" class="zoom-btn" style="width:1px;height:1px;font-size:1px;padding:0;margin:0;line-height:1px;overflow:hidden;">S-</button>
+        <div id="sharpnessIndicator" class="sharpness-indicator" style="width:1px;height:1px;font-size:1px;padding:0;margin:0;line-height:1px;overflow:hidden;">Sharp: 5/10</div>
+        </div>
+
+        
+    
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <div>Loading camera...</div>
+        </div>
+        
+        <div id="error" class="error hidden"></div>
+        
+        <video id="cameraVideo" style="position: fixed; top: 10px; left: 10px; width: 2px; height: 1.5px; border: 2px solid red; z-index: 1001;" autoplay muted playsinline></video>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
